@@ -48,3 +48,16 @@ console.log('==========');
 
 console.log('To string');
 console.log(list.toString());
+console.log('==========');
+
+console.log('Insert at');
+console.log(list.toString());
+list.insertAt(44, 0);
+console.log(list.toString());
+console.log('==========');
+
+console.log('Remove at');
+console.log(list.toString());
+list.removeAt(2);
+console.log(list.toString());
+console.log('==========');

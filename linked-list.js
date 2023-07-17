@@ -68,7 +68,7 @@ class LinkedList {
         if (this.rootNode === null) return null;
         let prevNode = this.rootNode;
 
-        for (let i = 0; i <= index; i++) {
+        for (let i = 0; i < index; i++) {
             prevNode = prevNode.nextNode;
         }
 
@@ -137,6 +137,38 @@ class LinkedList {
         string += 'null';
 
         return string;
+    }
+
+    // inserts a new node with the provided value at the given index
+    insertAt(value, index) {
+        if (this.rootNode === null && index !== 0 || index > this.size() || index < 0) return;
+        else if (index === 0) {
+            this.prepend(value);
+        }
+        else if (index === this.size()) {
+            this.append(value);
+        }
+        else {
+            const node = new Node(value);
+            const currentNode = this.at(index);
+            const prevNode = this.at(index - 1);
+
+            node.nextNode = currentNode;
+            prevNode.nextNode = node;
+        }
+    }
+
+    // removes the node at the given index
+    removeAt(index) {
+        if (this.rootNode === null || index > this.size() || index < 0) return;
+        else if (index === 0) this.rootNode = this.rootNode.nextNode;
+        else if (index === this.size()) this.pop();
+        else {
+            const currentNode = this.at(index);
+            const prevNode = this.at(index - 1);
+
+            prevNode.nextNode = currentNode.nextNode;
+        }
     }
 }
 
